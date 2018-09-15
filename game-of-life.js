@@ -1,33 +1,45 @@
 var canvas = document.getElementById('canvas');
 
-var width = 10;
-var height = 10;
+var width = 120;
+var height = 60;
 
 var context = canvas.getContext('2d');
+context.fillStyle="#2e5266"
 
 var gameState = createArray(width, height);
 
-init();
+var running = false;
 
-//Generate start configuration
-/*gameState[5][4].live = 1;
-gameState[5][5].live = 1;
-gameState[5][6].live = 1;*/
 
-//glider
-gameState[5][5].live = 1;
-gameState[6][5].live = 1;
-gameState[7][5].live = 1;
-gameState[6][4].live = 1;
-gameState[7][4].live = 1;
-gameState[8][4].live = 1;
+function startStop() {
+	if(running) {
+		running = false;
 
-//draw(); 
-play();
+		document.getElementById("startStopButton").innerText= "Start";
+	}
+	else {
+		context.clearRect(0, 0, canvas.width, canvas.height);
+		running = true;
+
+		init();
+		seed();
+		play();
+
+		document.getElementById("startStopButton").innerText= "Stop";
+	}
+}
+
+function seed() {
+	for(var i=1, ii=width-1; i<ii; i++) {
+		for(var j=1, jj=height-1; j<jj; j++) {
+			gameState[i][j].live = Math.random() > 0.5 ? 1 : 0;
+		}
+	}
+}
 
 async function play() {
 
-	while(true) {
+	while(running) {
 		processRules();
 		draw();
 
@@ -41,7 +53,6 @@ function iterate() {
 }
 
 function processRules() {
-	//under population rule. Any cell with fewer than 2 live neighbours dies.
 	for(var i=1, ii=width-1; i<ii; i++) {
 		for(var j=1, jj=height-1; j<jj; j++) {
 
@@ -61,17 +72,14 @@ function processRules() {
 
 				//under population
 				if(neighbourCount < 2) {
-					console.log("Cell " + i + "," + j + " dies by under population");
 					gameState[i][j].newValue = 0;
 				}
 				//over population
 				else if(neighbourCount > 3) {
-					console.log("Cell " + i + "," + j + " dies by over population");
 					gameState[i][j].newValue = 0;
 				}
 
 				else {
-					console.log("Cell " + i + "," + j + " survives");
 					gameState[i][j].newValue = 1;	
 				}
 			}
@@ -79,7 +87,6 @@ function processRules() {
 			//dead cell rules
 			else {
 				if(neighbourCount == 3) {
-					console.log("Cell " + i + "," + j + " is born");
 					gameState[i][j].newValue = 1;
 				}
 			}
@@ -107,12 +114,12 @@ function init() {
 
 function draw() {
 
-	context.clearRect(0, 0, canvas.width, canvas.height);
-
 	for(var i=0, ii=width; i<ii; i++) {
 		for(var j=0, jj=height; j<jj; j++) {
 			if(gameState[i][j].live)
 				context.fillRect(i*5, j*5, 5, 5);
+			else
+				context.clearRect(i*5, j*5, 5, 5)
 		}
 	}
 }

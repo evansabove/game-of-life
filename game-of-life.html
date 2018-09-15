@@ -2,11 +2,37 @@
 <html>
 	<head>
 		<title>Game Of Life</title>
+		<style>
+			* {
+				font-family: Tahoma;
+			}
+			body {
+				background-color: #D3D0CB;
+			}
+
+			button {
+			    background-color: #2e5266;
+			    border: none;
+			    color: white;
+			    padding: 15px 32px;
+			    text-align: center;
+			    text-decoration: none;
+			    display: inline-block;
+			    font-size: 16px;
+			}
+		</style>
 	</head>
 	<body>
-		<canvas id="canvas" width="300" height="300"></canvas>
+		<div align="center">
+			<h1>Game of Life</h1>
 
-		<button onclick="iterate()">Iterate</button>
+			<canvas id="canvas" width="600" height="300" style="border: 1px solid #2e5266;"></canvas>
+		</div>
+
+		<div align="center">
+			<button onclick="startStop()" id="startStopButton">Start</button>
+		</div>
+		
 
 		<script type="text/javascript" src="game-of-life.js"></script>
 	</body>
