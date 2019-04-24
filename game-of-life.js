@@ -1,10 +1,10 @@
 var canvas = document.getElementById('canvas');
 
-var width = 120;
-var height = 60;
+var width = 600;
+var height = 600;
 
 var context = canvas.getContext('2d');
-context.fillStyle="#2e5266"
+context.fillStyle="#038C8C"
 
 var gameState = createArray(width, height);
 
@@ -116,7 +116,7 @@ function draw() {
 
 	for(var i=0, ii=width; i<ii; i++) {
 		for(var j=0, jj=height; j<jj; j++) {
-			if(gameState[i][j].live)
+			if(gameState[i][j].live && gameState[i][j].live === gameState[i][j].newValue)
 				context.fillRect(i*5, j*5, 5, 5);
 			else
 				context.clearRect(i*5, j*5, 5, 5)
