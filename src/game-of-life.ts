@@ -1,4 +1,4 @@
-class Game {
+export class Game {
     private gameState: Cell[][];
     private running = false;
     private size = 600;
@@ -8,7 +8,7 @@ class Game {
     constructor() {
         this.gameState = [];
         this.canvas = <HTMLCanvasElement> document.getElementById('canvas');
-        this.context = this.canvas.getContext('2d');
+        this.context = this.canvas.getContext('2d')!;
         this.context.fillStyle="#038C8C"
     }
 
@@ -16,7 +16,7 @@ class Game {
         if(this.running) {
             this.running = false;
     
-            document.getElementById("startStopButton").innerText= "Start";
+            document.getElementById("startStopButton")!.innerText= "Start";
         }
         else {
             this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -26,7 +26,7 @@ class Game {
             this.seed();
             this.play();
     
-            document.getElementById("startStopButton").innerText= "Stop";
+            document.getElementById("startStopButton")!.innerText= "Stop";
         }
     }
 
@@ -129,7 +129,7 @@ class Cell {
     }
 }
 
-let game = new Game();
+var game = new Game();
 
 function startStop() {
     game.startStop();
