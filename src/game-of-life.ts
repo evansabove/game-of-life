@@ -1,4 +1,4 @@
-export class Game {
+class Game {
     private gameState: Cell[][];
     private running = false;
     private size = 600;
