@@ -5,8 +5,8 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import GameOfLife from "./components/GameOfLife.vue";
+import { Component, Vue } from 'vue-property-decorator';
+import GameOfLife from './components/GameOfLife.vue';
 
 @Component({
   components: {
