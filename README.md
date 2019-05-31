@@ -1,3 +1,5 @@
+[![Build Status](https://dev.azure.com/andrewjamesevans/andrewjamesevans/_apis/build/status/evansabove.game-of-life?branchName=master)](https://dev.azure.com/andrewjamesevans/andrewjamesevans/_build/latest?definitionId=1&branchName=master)
+
 # game-of-life
 
 ## Project setup
