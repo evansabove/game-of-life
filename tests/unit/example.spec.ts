@@ -1,12 +1,9 @@
-import { shallowMount } from '@vue/test-utils';
-import HelloWorld from '@/components/HelloWorld.vue';
+import Game from '@/game';
 
-describe('HelloWorld.vue', () => {
-  it('renders props.msg when passed', () => {
-    const msg = 'new message';
-    const wrapper = shallowMount(HelloWorld, {
-      propsData: { msg },
-    });
-    expect(wrapper.text()).toMatch(msg);
+describe('Game', () => {
+  it('should not be running when started', () => {
+    const game = new Game();
+
+    expect(game.isRunning).toBe(false);
   });
 });

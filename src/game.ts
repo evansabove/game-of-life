@@ -108,6 +108,7 @@ export default class Game {
             for (let i = 0, ii = this.size; i < ii; i++) {
                   for (let j = 0, jj = this.size; j < jj; j++) {
                         if (this.gameState[i][j].live && this.gameState[i][j].live === this.gameState[i][j].newValue) {
+                              this.context.fillStyle = '#1B264F';
                               this.context.fillRect(i * 5, j * 5, 5, 5);
                         } else {
                               this.context.clearRect(i * 5, j * 5, 5, 5);
